@@ -21,7 +21,7 @@
         cursor: pointer;
   }
   /* ── SCROLLBAR ──────────────────────────────────────────────── */
-  ::-webkit-scrollbar            { width: 4px; }
+  ::-webkit-scrollbar            { width: 5px; }
   ::-webkit-scrollbar-track      { background: var(--color-brand-50); }
   ::-webkit-scrollbar-thumb      { background: var(--color-brand-600); border-radius: 2px; }
   ::-webkit-scrollbar-thumb:hover{ background: var(--color-brand-700); }
