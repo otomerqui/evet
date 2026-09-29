@@ -12,3 +12,18 @@
   --color-alert-500: #D97706;
   --color-bg-modal: rgba(0, 0, 0, 0.65);
 }
+
+@layer base {
+  html {
+        scroll-behavior: smooth;
+  }
+  button {
+        cursor: pointer;
+  }
+  /* ── SCROLLBAR ──────────────────────────────────────────────── */
+  ::-webkit-scrollbar            { width: 4px; }
+  ::-webkit-scrollbar-track      { background: var(--color-brand-50); }
+  ::-webkit-scrollbar-thumb      { background: var(--color-brand-600); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover{ background: var(--color-brand-700); }
+    
+}
