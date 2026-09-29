@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #F0FDFA;
+  --color-brand-600: #0F766E;
+  --color-brand-700: #0E6660;
+
+  --color-ink-500: #64748B;
+  --color-ink-900: #1E293B;
+
+  --color-canvas: #F8FAFC;
+  --color-alert-500: #D97706;
+  --color-bg-modal: rgba(0, 0, 0, 0.65);
+}
