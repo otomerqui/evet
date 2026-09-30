@@ -21,7 +21,7 @@ export default function Sidebar() {
   }, []);
 
   return (
-    <aside className="group flex h-screen w-16 shrink-0 flex-col overflow-hidden border-r border-ink-500/10 bg-surface transition-all duration-200 hover:w-56">
+    <aside className="group flex h-full w-16 shrink-0 flex-col overflow-hidden border-r border-ink-500/10 bg-surface transition-all duration-200 hover:w-56">
       {/* Clinic branding */}
       <div className="flex items-center gap-3 border-b border-ink-500/10 p-4">
         {clinic?.logoUrl ? (
