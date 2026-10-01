@@ -1,6 +1,6 @@
 import VisitCard from './VisitCard';
 
-export default function VisitList({ visits, onEditVisitClick }) {
+export default function VisitList({ visits, onEditVisitClick, onDeleteVisitClick }) {
   if (visits.length === 0) {
     return <p className="text-sm text-ink-500">Aún no se han registrado visitas.</p>;
   }
@@ -10,7 +10,7 @@ export default function VisitList({ visits, onEditVisitClick }) {
   return (
     <div className="space-y-3">
       {sorted.map((visit) => (
-        <VisitCard key={visit.id} visit={visit} onEditClick={onEditVisitClick}/>
+        <VisitCard key={visit.id} visit={visit} onEditClick={onEditVisitClick} onDeleteClick={onDeleteVisitClick}/>
       ))}
     </div>
   );

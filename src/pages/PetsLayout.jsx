@@ -3,8 +3,10 @@ import { Outlet } from 'react-router-dom';
 import Modal from '../components/Modal';
 import PatientForm from '../components/PatientForm';
 import VisitForm from '../components/VisitForm';
-import { getPatients, createPatient, updatePatient } from '../api/patients';
-import { getVisits, createVisit, updateVisit } from '../api/visits';
+import { getPatients, createPatient, updatePatient, deletePatient } from '../api/patients';
+import { getVisits, createVisit, updateVisit, deleteVisit } from '../api/visits';
+import { useNavigate } from 'react-router-dom';
+import ConfirmDialog from '../components/ConfirmDialog';
 
 export default function PetsLayout() {
   const [patients, setPatients] = useState([]);
@@ -17,6 +19,10 @@ export default function PetsLayout() {
   const [editingPatient, setEditingPatient] = useState(null);
   const [editingVisit, setEditingVisit] = useState(null);
   const [activePatientId, setActivePatientId] = useState(null);
+
+  const navigate = useNavigate();
+  const [confirmTarget, setConfirmTarget] = useState(null); // { type: 'patient' | 'visit', id, label }
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     async function loadData() {
@@ -79,6 +85,34 @@ export default function PetsLayout() {
     setIsVisitModalOpen(true);
   }
 
+  function requestDeletePatient(patient) {
+    setConfirmTarget({ type: 'patient', id: patient.id, label: patient.name });
+  }
+
+  function requestDeleteVisit(visit) {
+    setConfirmTarget({ type: 'visit', id: visit.id, label: `${visit.reason} — ${visit.date}` });
+  }
+
+  async function handleConfirmDelete() {
+  if (!confirmTarget) return;
+  setIsDeleting(true);
+  try {
+    if (confirmTarget.type === 'patient') {
+      await deletePatient(confirmTarget.id);
+      setPatients((prev) => prev.filter((p) => p.id !== confirmTarget.id));
+      navigate('/app/pets');
+    } else {
+      await deleteVisit(confirmTarget.id);
+      setVisits((prev) => prev.filter((v) => v.id !== confirmTarget.id));
+    }
+  } catch (err) {
+    alert(err.message || 'No se pudo eliminar. Intenta de nuevo.');
+  } finally {
+    setIsDeleting(false);
+    setConfirmTarget(null);
+  }
+}
+
   if (isLoading) return <p className="text-sm text-ink-500">Cargando...</p>;
   if (loadError) return <p className="text-sm text-alert-500">{loadError}</p>;
 
@@ -92,6 +126,8 @@ export default function PetsLayout() {
           openEditPatientModal,
           openAddVisitModal,
           openEditVisitModal,
+          requestDeletePatient,
+          requestDeleteVisit,
         }}
       />
 
@@ -128,8 +164,20 @@ export default function PetsLayout() {
             setIsVisitModalOpen(false);
             setEditingVisit(null);
           }}
-        />
+        />        
       </Modal>
+      <ConfirmDialog
+        isOpen={!!confirmTarget}
+        title={confirmTarget?.type === 'patient' ? 'Eliminar paciente' : 'Eliminar consulta'}
+        message={
+          confirmTarget?.type === 'patient'
+            ? `¿Eliminar a ${confirmTarget.label}? Se eliminará también todo su historial de consultas. Esta acción no se puede deshacer.`
+            : `¿Eliminar la consulta "${confirmTarget?.label}"? Esta acción no se puede deshacer.`
+        }
+        onConfirm={handleConfirmDelete}
+        onCancel={() => setConfirmTarget(null)}
+        isDeleting={isDeleting}
+      />
     </>
   );
 }

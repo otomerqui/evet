@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { ArrowLeft, Pencil, PawPrint, Cake, Scale, Mars, Venus, User, Phone, Mail, Stethoscope, ChevronRight, Plus } from 'lucide-react';
+import { ArrowLeft, Pencil, Trash2, PawPrint, Cake, Scale, Mars, Venus, User, Phone, Mail, Stethoscope, ChevronRight, Plus } from 'lucide-react';
 import VisitList from './VisitList';
 import { calculateAge } from '../utils/age';
 
@@ -20,6 +20,8 @@ export default function PatientProfile({
   onAddVisitClick,
   onEditPatientClick,
   onEditVisitClick,
+  onDeletePatientClick,
+  onDeleteVisitClick,
 }) {
   const visitsRef = useRef(null);
   const age = calculateAge(patient.birthdate);
@@ -46,13 +48,22 @@ export default function PatientProfile({
             <h1 className="truncate text-2xl font-semibold text-ink-900">{patient.name}</h1>
             <p className="text-sm text-ink-500">{patient.breed || patient.species}</p>
           </div>
-          <button
-            onClick={onEditPatientClick}
-            className="flex shrink-0 items-center gap-1.5 rounded-full border border-ink-500/15 px-3 py-1.5 text-sm font-semibold text-ink-900 hover:bg-brand-50"
-          >
-            <Pencil size={14} />
-            Editar perfil
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            <button
+              onClick={onEditPatientClick}
+              className="flex items-center gap-1.5 rounded-full border border-ink-500/15 px-3 py-1.5 text-sm font-semibold text-ink-900 hover:bg-brand-50"
+            >
+              <Pencil size={14} />
+              Editar perfil
+            </button>
+            <button
+              onClick={onDeletePatientClick}
+              aria-label="Eliminar paciente"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink-500/15 text-alert-500 hover:bg-alert-500/10"
+            >
+              <Trash2 size={16} />
+            </button>
+          </div>
         </div>
 
         <div className="mt-4 divide-y divide-ink-500/10">
@@ -109,7 +120,7 @@ export default function PatientProfile({
             Nueva consulta
           </button>
         </div>
-        <VisitList visits={visits} onEditVisitClick={onEditVisitClick} />
+        <VisitList visits={visits} onEditVisitClick={onEditVisitClick} onDeleteVisitClick={onDeleteVisitClick} />
       </div>
     </div>
   );

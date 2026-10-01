@@ -4,8 +4,15 @@ import PatientProfile from '../components/PatientProfile';
 export default function PatientProfilePage() {
   const { patientId } = useParams();
   const navigate = useNavigate();
-  const { patients, visits, openEditPatientModal, openAddVisitModal, openEditVisitModal } =
-    useOutletContext();
+  const { 
+    patients, 
+    visits, 
+    openEditPatientModal, 
+    openAddVisitModal, 
+    openEditVisitModal, 
+    requestDeletePatient,
+    requestDeleteVisit, 
+  } = useOutletContext();
 
   const patient = patients.find((p) => p.id === patientId);
 
@@ -23,6 +30,8 @@ export default function PatientProfilePage() {
       onAddVisitClick={() => openAddVisitModal(patient.id)}
       onEditPatientClick={() => openEditPatientModal(patient)}
       onEditVisitClick={openEditVisitModal}
+      onDeletePatientClick={() => requestDeletePatient(patient)}
+      onDeleteVisitClick={requestDeleteVisit}
     />
   );
 }

@@ -27,3 +27,12 @@ export async function updateVisit(id, visitData) {
   if (error) throw error;
   return mapVisitFromDb(data);
 }
+
+export async function deleteVisit(id) {
+  const { error, count } = await supabase
+    .from('visits')
+    .delete({ count: 'exact' })
+    .eq('id', id);
+  if (error) throw error;
+  if (count === 0) throw new Error('No se eliminó ningún registro (posible bloqueo de permisos).');
+}

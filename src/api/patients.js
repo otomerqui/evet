@@ -27,3 +27,12 @@ export async function updatePatient(id, patientData) {
   if (error) throw error;
   return mapPatientFromDb(data);
 }
+
+export async function deletePatient(id) {
+  const { error, count } = await supabase
+    .from('patients')
+    .delete({ count: 'exact' })
+    .eq('id', id);
+  if (error) throw error;
+  if (count === 0) throw new Error('No se eliminó ningún registro (posible bloqueo de permisos).');
+}
