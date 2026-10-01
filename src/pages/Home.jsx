@@ -28,22 +28,22 @@ export default function Home() {
     loadStats();
   }, []);
 
-  if (isLoading) return <p className="text-sm text-ink-500">Loading...</p>;
+  if (isLoading) return <p className="text-sm text-ink-500">Cargando...</p>;
   if (loadError) return <p className="text-sm text-alert-500">{loadError}</p>;
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-semibold text-ink-900">Home</h1>
+      <h1 className="mb-6 text-2xl font-semibold text-ink-900">Inicio </h1>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <StatCard
-          label="Total pets"
+          label="Pacientes totales"
           total={data.totalPatients}
           sparkline={data.patientsTrend.sparkline}
           percentChange={data.patientsTrend.percentChange}
         />
         <StatCard
-          label="Total medical records"
+          label="Registros médicos totales"
           total={data.totalVisits}
           sparkline={data.visitsTrend.sparkline}
           percentChange={data.visitsTrend.percentChange}

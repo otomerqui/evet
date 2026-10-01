@@ -82,7 +82,7 @@ export default function SettingsForm({
   return (
     <form onSubmit={handleSubmit} className="max-w-lg space-y-4">
       <div>
-        <label className="block text-sm font-semibold text-ink-900">Clinic name</label>
+        <label className="block text-sm font-semibold text-ink-900">Nombre de la clínica</label>
         <input
           type="text"
           value={settings.clinicName}
@@ -93,7 +93,7 @@ export default function SettingsForm({
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-ink-900">Address</label>
+        <label className="block text-sm font-semibold text-ink-900">Dirección</label>
         <input
           type="text"
           value={settings.address}
@@ -104,7 +104,7 @@ export default function SettingsForm({
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-ink-900">Phone</label>
+          <label className="block text-sm font-semibold text-ink-900">Teléfono</label>
           <input
             type="text"
             value={settings.phone}
@@ -139,7 +139,7 @@ export default function SettingsForm({
               />
               <div className="flex flex-col gap-2">
                 <label className="cursor-pointer text-sm font-semibold text-brand-600 hover:text-brand-700">
-                  {isUploadingLogo ? 'Uploading...' : 'Change logo'}
+                  {isUploadingLogo ? 'Cargando...' : 'Cambiar logo'}
                   <input
                     type="file"
                     accept="image/png,image/jpeg,image/webp"
@@ -154,7 +154,7 @@ export default function SettingsForm({
                   disabled={isUploadingLogo}
                   className="text-sm font-semibold text-alert-500 hover:text-alert-500/80 disabled:opacity-50"
                 >
-                  Remove logo
+                  Eliminar logo
                 </button>
               </div>
             </>
@@ -183,9 +183,9 @@ export default function SettingsForm({
           disabled={isSaving}
           className="rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 disabled:opacity-50"
         >
-          {isSaving ? 'Saving...' : 'Save settings'}
+          {isSaving ? 'Guardando...' : 'Guardar ajustes'}
         </button>
-        {saved && <span className="text-sm text-brand-600">Saved</span>}
+        {saved && <span className="text-sm text-brand-600">Guardado</span>}
       </div>
     </form>
   );

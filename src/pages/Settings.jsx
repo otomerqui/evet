@@ -41,12 +41,12 @@ export default function Settings() {
     setSettings(updated);
   }
 
-  if (isLoading) return <p className="text-sm text-ink-500">Loading...</p>;
+  if (isLoading) return <p className="text-sm text-ink-500">Cargando...</p>;
   if (loadError) return <p className="text-sm text-alert-500">{loadError}</p>;
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-semibold text-ink-900">Settings</h1>
+      <h1 className="mb-6 text-2xl font-semibold text-ink-900">Ajustes</h1>
       <SettingsForm
         initialData={settings}
         onSubmit={handleSave}
