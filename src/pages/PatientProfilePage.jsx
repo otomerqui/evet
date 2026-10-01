@@ -10,7 +10,7 @@ export default function PatientProfilePage() {
   const patient = patients.find((p) => p.id === patientId);
 
   if (!patient) {
-    return <p className="text-sm text-ink-500">Patient not found.</p>;
+    return <p className="text-sm text-ink-500">No se encontró paciente.</p>;
   }
 
   const patientVisits = visits.filter((v) => v.patientId === patient.id);

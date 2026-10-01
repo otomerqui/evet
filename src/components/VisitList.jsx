@@ -2,7 +2,7 @@ import VisitCard from './VisitCard';
 
 export default function VisitList({ visits, onEditVisitClick }) {
   if (visits.length === 0) {
-    return <p className="text-sm text-ink-500">No visits recorded yet.</p>;
+    return <p className="text-sm text-ink-500">Aún no se han registrado visitas.</p>;
   }
 
   const sorted = [...visits].sort((a, b) => new Date(b.date) - new Date(a.date));

@@ -79,7 +79,7 @@ export default function PetsLayout() {
     setIsVisitModalOpen(true);
   }
 
-  if (isLoading) return <p className="text-sm text-ink-500">Loading...</p>;
+  if (isLoading) return <p className="text-sm text-ink-500">Cargando...</p>;
   if (loadError) return <p className="text-sm text-alert-500">{loadError}</p>;
 
   return (
@@ -101,7 +101,7 @@ export default function PetsLayout() {
           setIsPatientModalOpen(false);
           setEditingPatient(null);
         }}
-        title={editingPatient ? 'Edit patient' : 'Add patient'}
+        title={editingPatient ? 'Editar paciente' : 'Agregar paciente'}
       >
         <PatientForm
           initialData={editingPatient || undefined}
@@ -119,7 +119,7 @@ export default function PetsLayout() {
           setIsVisitModalOpen(false);
           setEditingVisit(null);
         }}
-        title={editingVisit ? 'Edit visit' : 'New visit'}
+        title={editingVisit ? 'Editar consulta' : 'Nueva consulta'}
       >
         <VisitForm
           initialData={editingVisit || undefined}

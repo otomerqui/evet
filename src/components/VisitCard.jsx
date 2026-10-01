@@ -1,3 +1,5 @@
+import { Pencil } from "lucide-react";
+
 export default function VisitCard({ visit, onEditClick }) {
   return (
     <div className="rounded-lg bg-surface p-4 shadow-sm">
@@ -6,9 +8,10 @@ export default function VisitCard({ visit, onEditClick }) {
         <span className="text-sm text-ink-500">{visit.weight} kg</span>
         <button
             onClick={() => onEditClick(visit)}
-            className="text-sm font-semibold text-brand-600 hover:text-brand-700"
+            className="flex shrink-0 items-center gap-1.5 rounded-full border border-ink-500/15 px-3 py-1.5 text-sm font-semibold text-ink-900 hover:bg-brand-50"
           >
-            Edit
+            <Pencil size={14} />
+            Editar consulta
         </button>
       </div>
       <p className="mt-1 text-sm text-ink-900">{visit.reason}</p>

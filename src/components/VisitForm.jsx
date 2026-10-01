@@ -62,7 +62,7 @@ export default function VisitForm({ initialData, onSubmit, onCancel }) {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-ink-900">Date</label>
+          <label className="block text-sm font-semibold text-ink-900">Fecha</label>
           <input
             type="date"
             value={visit.date}
@@ -73,7 +73,7 @@ export default function VisitForm({ initialData, onSubmit, onCancel }) {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-ink-900">Weight (kg)</label>
+          <label className="block text-sm font-semibold text-ink-900">Peso (kg)</label>
           <input
             type="text"
             value={visit.weight}
@@ -85,19 +85,19 @@ export default function VisitForm({ initialData, onSubmit, onCancel }) {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-ink-900">Reason</label>
+        <label className="block text-sm font-semibold text-ink-900">Motivo de consulta</label>
         <input
           type="text"
           value={visit.reason}
           onChange={(e) => handleChange('reason', e.target.value)}
           className={inputClass('reason')}
-          placeholder="Annual checkup, injury, ..."
+          placeholder="Chequeo anual, lesión, ..."
         />
         {errors.reason && <p className="mt-1 text-sm text-alert-500">{errors.reason}</p>}
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-ink-900">Diagnosis</label>
+        <label className="block text-sm font-semibold text-ink-900">Diagnóstico</label>
         <textarea
           value={visit.diagnosis}
           onChange={(e) => handleChange('diagnosis', e.target.value)}
@@ -107,7 +107,7 @@ export default function VisitForm({ initialData, onSubmit, onCancel }) {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-ink-900">Treatment</label>
+        <label className="block text-sm font-semibold text-ink-900">Tratamiento</label>
         <textarea
           value={visit.treatment}
           onChange={(e) => handleChange('treatment', e.target.value)}
@@ -117,7 +117,7 @@ export default function VisitForm({ initialData, onSubmit, onCancel }) {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-ink-900">Vet notes</label>
+        <label className="block text-sm font-semibold text-ink-900">Anotaciones veterinario</label>
         <textarea
           value={visit.vetNotes}
           onChange={(e) => handleChange('vetNotes', e.target.value)}
@@ -132,14 +132,14 @@ export default function VisitForm({ initialData, onSubmit, onCancel }) {
           onClick={onCancel}
           className="rounded-md px-4 py-2 text-sm font-semibold text-ink-500 hover:text-ink-900"
         >
-          Cancel
+          Cancelar
         </button>
         <button
           type="submit"
           disabled={isSubmitting}
           className="rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
         >
-          {isSubmitting ? 'Saving...' : 'Save visit'}
+          {isSubmitting ? 'Guardando...' : 'Guardar visita'}
         </button>
       </div>
     </form>

@@ -79,7 +79,7 @@ export default function PatientForm({ initialData, onSubmit, onCancel }) {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-ink-900">Name</label>
+          <label className="block text-sm font-semibold text-ink-900">Nombre</label>
           <input
             type="text"
             value={patient.name}
@@ -90,19 +90,19 @@ export default function PatientForm({ initialData, onSubmit, onCancel }) {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-ink-900">Species</label>
+          <label className="block text-sm font-semibold text-ink-900">Especie</label>
           <input
             type="text"
             value={patient.species}
             onChange={(e) => handleChange('species', e.target.value)}
             className={inputClass('species')}
-            placeholder="Dog, Cat, ..."
+            placeholder="Perro, Gato, ..."
           />
           {errors.species && <p className="mt-1 text-sm text-alert-500">{errors.species}</p>}
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-ink-900">Breed</label>
+          <label className="block text-sm font-semibold text-ink-900">Raza</label>
           <input
             type="text"
             value={patient.breed}
@@ -112,20 +112,20 @@ export default function PatientForm({ initialData, onSubmit, onCancel }) {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-ink-900">Sex</label>
+          <label className="block text-sm font-semibold text-ink-900">Sexo</label>
           <select
             value={patient.sex}
             onChange={(e) => handleChange('sex', e.target.value)}
             className={inputClass('sex')}
           >
-            <option value="">Select</option>
-            <option value="M">Male</option>
-            <option value="F">Female</option>
+            <option value="">Seleccionar</option>
+            <option value="M">Macho</option>
+            <option value="F">Hembra</option>
           </select>
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-ink-900">Birthdate</label>
+          <label className="block text-sm font-semibold text-ink-900">Fecha de nacimiento</label>
           <input
             type="date"
             value={patient.birthdate}
@@ -136,7 +136,7 @@ export default function PatientForm({ initialData, onSubmit, onCancel }) {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-ink-900">Weight (kg)</label>
+          <label className="block text-sm font-semibold text-ink-900">Peso (kg)</label>
           <input
             type="text"
             value={patient.weight}
@@ -150,7 +150,7 @@ export default function PatientForm({ initialData, onSubmit, onCancel }) {
       <hr className="border-ink-500/10" />
 
       <div>
-        <label className="block text-sm font-semibold text-ink-900">Owner name</label>
+        <label className="block text-sm font-semibold text-ink-900">Nombre del dueño</label>
         <input
           type="text"
           value={patient.ownerName}
@@ -162,7 +162,7 @@ export default function PatientForm({ initialData, onSubmit, onCancel }) {
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-ink-900">Owner phone</label>
+          <label className="block text-sm font-semibold text-ink-900">Teléfono del dueño</label>
           <input
             type="text"
             value={patient.ownerPhone}
@@ -173,7 +173,7 @@ export default function PatientForm({ initialData, onSubmit, onCancel }) {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-ink-900">Owner email</label>
+          <label className="block text-sm font-semibold text-ink-900">Email del dueño</label>
           <input
             type="text"
             value={patient.ownerEmail}
@@ -190,14 +190,14 @@ export default function PatientForm({ initialData, onSubmit, onCancel }) {
           onClick={onCancel}
           className="rounded-md px-4 py-2 text-sm font-semibold text-ink-500 hover:text-ink-900"
         >
-          Cancel
+          Cancelar
         </button>
         <button
           type="submit"
           disabled={isSubmitting}
           className="rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
         >
-          {isSubmitting ? 'Saving...' : 'Save patient'}
+          {isSubmitting ? 'Guardando...' : 'Guardar paciente'}
         </button>
       </div>
     </form>
