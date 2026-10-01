@@ -19,12 +19,12 @@ export default function PatientsListPage() {
   return (
     <div className="mx-auto max-w-5xl">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-ink-900">eVet — Patients</h1>
+        <h1 className="text-2xl font-semibold text-ink-900">Pacientes</h1>
         <button
           onClick={openAddPatientModal}
           className="rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
         >
-          Add patient
+          Agregar paciente
         </button>
       </div>
 

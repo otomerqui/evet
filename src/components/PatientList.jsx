@@ -5,11 +5,11 @@ export default function PatientList({ patients, onSelectPatient, searchQuery }) 
     if (searchQuery) {
       return (
         <p className="text-sm text-ink-500">
-          No patients match "{searchQuery}". Try a different search.
+          No se encontraron pacientes para "{searchQuery}". Intenta con otra búsqueda.
         </p>
       );
     }
-    return <p className="text-sm text-ink-500">No patients yet. Add your first one above.</p>;
+    return <p className="text-sm text-ink-500">Aún no hay pacientes. Agrega el primero arriba.</p>;
   }
 
   return (
