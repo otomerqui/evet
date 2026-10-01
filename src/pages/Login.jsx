@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 export default function Login() {
   const { session, isLoading, signIn } = useAuth();
@@ -14,9 +16,9 @@ export default function Login() {
 
   function validate() {
     const newErrors = {};
-    if (!email.trim()) newErrors.email = 'Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = 'Enter a valid email address';
-    if (!password) newErrors.password = 'Password is required';
+    if (!email.trim()) newErrors.email = 'El email es requerido';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = 'Ingrese un email valido';
+    if (!password) newErrors.password = 'La contraseña es requerida';
     return newErrors;
   }
 
@@ -32,7 +34,7 @@ export default function Login() {
     setIsSubmitting(true);
     const { error } = await signIn(email.trim(), password);
     setIsSubmitting(false);
-    if (error) setFormError('Incorrect email or password.');
+    if (error) setFormError('Email o contraseña incorrecta.');
   }
 
   const inputClass = (field) =>
@@ -43,8 +45,15 @@ export default function Login() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-canvas p-6">
       <div className="w-full max-w-sm rounded-lg bg-surface p-6 shadow-sm">
-        <h1 className="text-xl font-semibold text-ink-900">Sign in to eVet</h1>
-        <p className="mt-1 text-sm text-ink-500">Use the account provided for your clinic.</p>
+        <Link
+          to="/"
+          className="mb-4 flex items-center gap-1 text-sm font-semibold text-ink-500 hover:text-ink-900"
+        >
+          <ArrowLeft size={16} />
+          Volver al inicio
+        </Link>
+        <h1 className="text-xl font-semibold text-ink-900">Inicia sesión en eVet</h1>
+        <p className="mt-1 text-sm text-ink-500">Utilice las credenciales de cuenta proporcionada para su clínica.</p>
 
         <form onSubmit={handleSubmit} noValidate className="mt-6 space-y-4">
           <div>
@@ -60,7 +69,7 @@ export default function Login() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-ink-900">Password</label>
+            <label className="block text-sm font-semibold text-ink-900">Contraseña</label>
             <input
               type="password"
               autoComplete="current-password"
@@ -78,7 +87,7 @@ export default function Login() {
             disabled={isSubmitting}
             className="w-full rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 disabled:opacity-50"
           >
-            {isSubmitting ? 'Signing in...' : 'Sign in'}
+            {isSubmitting ? 'Iniciando sesión...' : 'Iniciar sesión'}
           </button>
         </form>
       </div>
