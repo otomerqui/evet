@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import YouTubeFacade from '../components/YouTubeFacade';
 import {
   PawPrint,
   Stethoscope,
@@ -146,14 +147,7 @@ export default function Landing() {
           </p>
           <div className="w-full max-w-3xl mx-auto mt-10">
             <div className="aspect-video">
-              <iframe 
-                className="w-full h-full rounded-lg shadow-lg"
-                src="https://www.youtube.com/embed/0mwc7e2KeDc" 
-                title="YouTube video player" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen>
-              </iframe>
+              <YouTubeFacade videoId="0mwc7e2KeDc" title="Video demo de eVet" />
             </div>
           </div>
       </section>
