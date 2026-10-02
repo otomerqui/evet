@@ -1,15 +1,8 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Layout from './components/Layout';
-import ProtectedRoute from './components/ProtectedRoute';
+import { Routes, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
-import Login from './pages/Login';
 
-const Home = lazy(() => import('./pages/Home'));
-const Settings = lazy(() => import('./pages/Settings'));
-const PetsLayout = lazy(() => import('./pages/PetsLayout'));
-const PatientsListPage = lazy(() => import('./pages/PatientsListPage'));
-const PatientProfilePage = lazy(() => import('./pages/PatientProfilePage'));
+const AuthedApp = lazy(() => import('./AuthedApp'));
 
 function PageLoading() {
   return (
@@ -21,24 +14,16 @@ function PageLoading() {
 
 export default function App() {
   return (
-    <Suspense fallback={<PageLoading />}>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-
-        <Route element={<ProtectedRoute />}>
-          <Route path="/app" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="pets" element={<PetsLayout />}>
-              <Route index element={<PatientsListPage />} />
-              <Route path=":patientId" element={<PatientProfilePage />} />
-            </Route>
-            <Route path="settings" element={<Settings />} />
-          </Route>
-        </Route>
-
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route
+        path="/*"
+        element={
+          <Suspense fallback={<PageLoading />}>
+            <AuthedApp />
+          </Suspense>
+        }
+      />
+    </Routes>
   );
 }
