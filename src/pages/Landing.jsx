@@ -87,7 +87,7 @@ export default function Landing() {
         {/* Background */ }
         <div className="absolute inset-0">
             <img 
-                src="../public/hero-bg.webp"
+                src="/hero-bg.webp"
                 alt="Hero Image" 
                 className="w-full h-full object-cover opacity-40"
             />
