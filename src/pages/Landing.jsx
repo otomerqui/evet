@@ -133,6 +133,27 @@ export default function Landing() {
         </div>
       </section>
       
+      {/* Video */}
+      <section className='mx-auto max-w-5xl px-6 py-16'>
+          <h2 className="text-center text-2xl font-semibold text-ink-900">
+            Video demo
+          </h2>
+          <p className="mx-auto mt-2 max-w-xl text-center text-sm text-ink-500">
+            Mira todo lo que puedes hacer para llevar el registro de tus pacientes en un solo lugar de manera ágil y eficiente.
+          </p>
+          <div className="w-full max-w-3xl mx-auto mt-10">
+            <div className="aspect-video">
+              <iframe 
+                className="w-full h-full rounded-lg shadow-lg"
+                src="https://www.youtube.com/embed/0mwc7e2KeDc" 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen>
+              </iframe>
+            </div>
+          </div>
+      </section>
 
       {/* Features */}
       <section className="mx-auto max-w-5xl px-6 py-16">
