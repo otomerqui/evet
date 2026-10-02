@@ -1,32 +1,44 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
-import Home from './pages/Home';
-import Settings from './pages/Settings';
-import PetsLayout from './pages/PetsLayout';
-import PatientsListPage from './pages/PatientsListPage';
-import PatientProfilePage from './pages/PatientProfilePage';
+
+const Home = lazy(() => import('./pages/Home'));
+const Settings = lazy(() => import('./pages/Settings'));
+const PetsLayout = lazy(() => import('./pages/PetsLayout'));
+const PatientsListPage = lazy(() => import('./pages/PatientsListPage'));
+const PatientProfilePage = lazy(() => import('./pages/PatientProfilePage'));
+
+function PageLoading() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-canvas">
+      <p className="text-sm text-ink-500">Cargando...</p>
+    </div>
+  );
+}
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/login" element={<Login />} />
+    <Suspense fallback={<PageLoading />}>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
 
-      <Route element={<ProtectedRoute />}>
-        <Route path="/app" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="pets" element={<PetsLayout />}>
-            <Route index element={<PatientsListPage />} />
-            <Route path=":patientId" element={<PatientProfilePage />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/app" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="pets" element={<PetsLayout />}>
+              <Route index element={<PatientsListPage />} />
+              <Route path=":patientId" element={<PatientProfilePage />} />
+            </Route>
+            <Route path="settings" element={<Settings />} />
           </Route>
-          <Route path="settings" element={<Settings />} />
         </Route>
-      </Route>
 
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Suspense>
   );
 }
