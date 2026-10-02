@@ -81,27 +81,56 @@ export default function Landing() {
         </div>
       </header>
 
+     
       {/* Hero */}
-      <section className="mx-auto max-w-3xl px-6 py-20 text-center">
-        <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
-          <PawPrint size={28} />
+      <section className="relative overflow-hidden">
+        {/* Background */ }
+        <div className="absolute inset-0">
+            <img 
+                src="/public/hero-bg.webp"
+                alt="Hero Image" 
+                className="w-full h-full object-cover opacity-40"
+            />
+            <div className="absolute inset-0 bg-linear-to-b from-brand-600 via-brand-600/70 to-brand-600/30"/>
         </div>
-        <h1 className="text-3xl font-semibold text-ink-900 sm:text-4xl">
-          El historial médico de tus pacientes, siempre a la mano
-        </h1>
-        <p className="mt-4 text-base text-ink-500">
-          eVet es la plataforma para que tu clínica veterinaria organice pacientes,
-          consultas e historiales médicos en un solo lugar, sin papeles ni hojas de cálculo.
-        </p>
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-700"
-        >
-          <MessageCircle size={18} />
-          Contáctanos por WhatsApp
-        </a>
+        {/*Green dots */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(30)].map( (_, i) => (
+                <div 
+                    key={i}
+                    className="absolute w-1.5 h-1.5 rounded-full opacity-60"
+                    style={{
+                        backgroundColor: "#0F766E",
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
+                        animation: `slow-drift ${15 + Math.random() * 20}s ease-in-out infinite`,
+                        animationDelay: `${Math.random() * 5}s`,
+                    }}
+                />
+            ))}
+        </div>
+        {/* Contenido */ }
+        <div className="mx-auto max-w-3xl px-6 py-20 text-center relative z-10">
+          <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
+            <PawPrint size={28} />
+          </div>
+          <h1 className="text-3xl font-semibold text-white sm:text-4xl">
+            El historial médico de tus pacientes, siempre a la mano
+          </h1>
+          <p className="mt-4 text-base text-white">
+            eVet es la plataforma para que tu clínica veterinaria organice pacientes,
+            consultas e historiales médicos en un solo lugar, sin papeles ni hojas de cálculo.
+          </p>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-700"
+          >
+            <MessageCircle size={18} />
+            Contáctanos por WhatsApp
+          </a>
+        </div>
       </section>
       
 
