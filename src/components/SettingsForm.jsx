@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 
 function validate(settings) {
   const errors = {};
-  if (!settings.clinicName.trim()) errors.clinicName = 'Clinic name is required';
+  if (!settings.clinicName.trim()) errors.clinicName = 'El nombre de la clínica es obligatorio';
   if (settings.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(settings.email)) {
-    errors.email = 'Enter a valid email address';
+    errors.email = 'Introduce una dirección de correo electrónico válida';
   }
   return errors;
 }
