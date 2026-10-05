@@ -15,32 +15,32 @@ const emptyPatient = {
 function validate(patient) {
   const errors = {};
 
-  if (!patient.name.trim()) errors.name = 'Patient name is required';
-  if (!patient.species.trim()) errors.species = 'Species is required';
+  if (!patient.name.trim()) errors.name = 'El nombre del paciente es obligatorio';
+  if (!patient.species.trim()) errors.species = 'La especie es obligatoria';
 
   if (!patient.weight) {
-    errors.weight = 'Weight is required';
+    errors.weight = 'Se requiere el peso';
   } else if (isNaN(patient.weight) || Number(patient.weight) <= 0) {
-    errors.weight = 'Weight must be a positive number';
+    errors.weight = 'El peso debe ser un número positivo';
   }
 
   if (patient.birthdate) {
     const date = new Date(patient.birthdate);
     if (isNaN(date.getTime())) {
-      errors.birthdate = 'Enter a valid date';
+      errors.birthdate = 'Ingrese una fecha válida';
     } else if (date > new Date()) {
-      errors.birthdate = 'Birthdate cannot be in the future';
+      errors.birthdate = 'La fecha de nacimiento no puede ser futura';
     }
   }
 
-  if (!patient.ownerName.trim()) errors.ownerName = "Owner's name is required";
+  if (!patient.ownerName.trim()) errors.ownerName = "Se requiere el nombre del propietario.";
 
   if (patient.ownerPhone && !/^[\d\s()+-]{7,}$/.test(patient.ownerPhone)) {
-    errors.ownerPhone = 'Enter a valid phone number';
+    errors.ownerPhone = 'Ingrese un número de teléfono válido';
   }
 
   if (patient.ownerEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(patient.ownerEmail)) {
-    errors.ownerEmail = 'Enter a valid email address';
+    errors.ownerEmail = 'Introduce una dirección de correo electrónico válida';
   }
 
   return errors;

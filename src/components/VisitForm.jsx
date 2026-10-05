@@ -13,17 +13,17 @@ function validate(visit) {
   const errors = {};
 
   if (!visit.date) {
-    errors.date = 'Date is required';
+    errors.date = 'La fecha es obligatoria';
   } else if (new Date(visit.date) > new Date()) {
-    errors.date = 'Date cannot be in the future';
+    errors.date = 'La fecha no puede ser futura';
   }
 
-  if (!visit.reason.trim()) errors.reason = 'Reason is required';
+  if (!visit.reason.trim()) errors.reason = 'Se requiere un motivo';
 
   if (!visit.weight) {
-    errors.weight = 'Weight is required';
+    errors.weight = 'Se requiere el peso';
   } else if (isNaN(visit.weight) || Number(visit.weight) <= 0) {
-    errors.weight = 'Weight must be a positive number';
+    errors.weight = 'El peso debe ser un número positivo';
   }
 
   return errors;
