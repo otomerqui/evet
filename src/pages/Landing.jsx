@@ -147,7 +147,7 @@ export default function Landing() {
           </p>
           <div className="w-full max-w-3xl mx-auto mt-10">
             <div className="aspect-video">
-              <YouTubeFacade videoId="0mwc7e2KeDc" title="Video demo de eVet" />
+              <YouTubeFacade videoId="nNCgiuzB36s" title="Video demo de eVet" />
             </div>
           </div>
       </section>
