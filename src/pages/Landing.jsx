@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import ScrollFadeIn from '../components/scrollFadeIn';
+import ScrollFadeIn from '../components/ScrollFadeIn';
 import YouTubeFacade from '../components/YouTubeFacade';
 import {
   PawPrint,
