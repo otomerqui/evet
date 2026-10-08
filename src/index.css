@@ -11,6 +11,21 @@
   --color-canvas: #F8FAFC;
   --color-alert-500: #D97706;
   --color-bg-modal: rgba(0, 0, 0, 0.65);
+
+  --animate-fadein: fadein 1s ease-out forwards;
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
 }
 
 @layer base {
@@ -44,4 +59,42 @@
     transform: translate(30px, 10px);
     }
   }
+  /*
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+  
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out;
+    filter: blur(10px);
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .hero-enter {
+    animation: fade-up 0.7s ease-out both;
+  }
+  .hero-enter.delay-1 { animation-delay: 0.1s; }
+  .hero-enter.delay-2 { animation-delay: 0.2s; }
+  .hero-enter.delay-3 { animation-delay: 0.3s; }*/
 }
+
+

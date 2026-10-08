@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ScrollFadeIn from '../components/scrollFadeIn';
 import YouTubeFacade from '../components/YouTubeFacade';
 import {
   PawPrint,
@@ -64,6 +65,9 @@ const included = [
 ];
 
 export default function Landing() {
+  
+ 
+  
   return (
     <div className="min-h-screen bg-canvas">
       {/* Header */}
@@ -83,7 +87,7 @@ export default function Landing() {
       </header>
 
      
-      {/* Hero */}
+      {/* Hero */}     
       <section className="relative overflow-hidden">
         {/* Background */ }
         <div className="absolute inset-0">
@@ -115,119 +119,155 @@ export default function Landing() {
         </div>
         {/* Contenido */ }
         <div className="mx-auto max-w-3xl px-6 py-20 text-center relative z-10">
-          <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
-            <PawPrint size={28} />
-          </div>
-          <h1 className="text-3xl font-semibold text-white sm:text-4xl">
-            El historial médico de tus pacientes, siempre a la mano
-          </h1>
-          <p className="mt-4 text-base text-white">
-            eVet es la plataforma para que tu clínica veterinaria organice pacientes,
-            consultas e historiales médicos en un solo lugar, sin papeles ni hojas de cálculo.
-          </p>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-700"
-          >
-            <MessageCircle size={18} />
-            Contáctanos por WhatsApp
-          </a>
+          <ScrollFadeIn>
+            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
+              <PawPrint size={28} />
+            </div>
+          </ScrollFadeIn>
+          <ScrollFadeIn delay={100}>
+            <h1 className="text-3xl font-semibold text-white sm:text-4xl">
+              El historial médico de tus pacientes, siempre a la mano
+            </h1>
+          </ScrollFadeIn>
+          <ScrollFadeIn delay={200}>
+            <p className="mt-4 text-base text-white">
+              eVet es la plataforma para que tu clínica veterinaria organice pacientes,
+              consultas e historiales médicos en un solo lugar, sin papeles ni hojas de cálculo.
+            </p>
+          </ScrollFadeIn>
+          <ScrollFadeIn delay={300}>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-700"
+            >
+              <MessageCircle size={18} />
+              Contáctanos por WhatsApp
+            </a>
+          </ScrollFadeIn>
         </div>
       </section>
-      
-      {/* Video */}
+    
+      {/* Video */}    
       <section className='mx-auto max-w-5xl px-6 py-16'>
+        <ScrollFadeIn>
           <h2 className="text-center text-2xl font-semibold text-ink-900">
             Video demo
           </h2>
+        </ScrollFadeIn>
+        <ScrollFadeIn delay={100}>
           <p className="mx-auto mt-2 max-w-xl text-center text-sm text-ink-500">
             Mira todo lo que puedes hacer para llevar el registro de tus pacientes en un solo lugar de manera ágil y eficiente.
           </p>
+        </ScrollFadeIn>
+        <ScrollFadeIn delay={200}>
           <div className="w-full max-w-3xl mx-auto mt-10">
             <div className="aspect-video">
               <YouTubeFacade videoId="nNCgiuzB36s" title="Video demo de eVet" />
             </div>
           </div>
+        </ScrollFadeIn>
       </section>
+     
 
-      {/* Features */}
+      {/* Features */}      
       <section className="mx-auto max-w-5xl px-6 py-16">
-        <h2 className="text-center text-2xl font-semibold text-ink-900">
-          Todo lo que tu clínica necesita
-        </h2>
-        <p className="mx-auto mt-2 max-w-xl text-center text-sm text-ink-500">
-          Y seguimos mejorando: estamos trabajando constantemente en nuevas funciones
-          para hacer eVet cada vez más útil para tu día a día.
-        </p>
+        <ScrollFadeIn>
+          <h2 className="text-center text-2xl font-semibold text-ink-900">
+            Todo lo que tu clínica necesita
+          </h2>
+        </ScrollFadeIn>
+        <ScrollFadeIn>
+          <p className="mx-auto mt-2 max-w-xl text-center text-sm text-ink-500">
+            Y seguimos mejorando: estamos trabajando constantemente en nuevas funciones
+            para hacer eVet cada vez más útil para tu día a día.
+          </p>
+        </ScrollFadeIn>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                key={feature.title}
-                className="rounded-xl bg-surface p-6 shadow-sm transition-shadow hover:shadow-md"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
-                  <Icon size={20} />
-                </div>
-                <h3 className="mt-4 font-semibold text-ink-900">{feature.title}</h3>
-                <p className="mt-2 text-sm text-ink-500">{feature.description}</p>
-              </div>
-            );
-          })}
-        </div>
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature, i) => {
+              const Icon = feature.icon;
+              return (
+                <ScrollFadeIn key={feature.title} delay={(i % 3) * 120} className="h-full">
+                  <div
+                    
+                    className="h-full rounded-xl bg-brand-600/20 p-6 shadow-sm transition-shadow hover:shadow-md"
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+                      <Icon size={20} />
+                    </div>
+                    <h3 className="mt-4 font-semibold text-ink-900">{feature.title}</h3>
+                    <p className="mt-2 text-sm text-ink-500">{feature.description}</p>
+                  </div>
+                </ScrollFadeIn>
+               
+              );
+            })}
+          </div>
       </section>
+     
 
-      {/* Pricing */}
+      {/* Pricing */}      
       <section className="mx-auto max-w-3xl px-6 py-16">
-        <div className="rounded-2xl bg-surface p-8 shadow-sm sm:p-10">
-          <div className="text-center">
-            <span className="inline-block rounded-full bg-alert-500/10 px-3 py-1 text-xs font-semibold text-alert-500">
-              50% de descuento para nuestros primeros 10 clientes
-            </span>
-            <h2 className="mt-4 text-2xl font-semibold text-ink-900">Un solo plan, sin sorpresas</h2>
-          </div>
-
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <div className="rounded-xl bg-canvas p-5 text-center">
-              <p className="text-sm text-ink-500">Pago único de activación</p>
-              <p className="mt-1 text-2xl font-semibold text-ink-900">$1.000.000 COP</p>
+          <div className="rounded-2xl bg-surface p-8 shadow-sm sm:p-10">
+            <div className="text-center">
+              <ScrollFadeIn>
+                <span className="inline-block rounded-full bg-alert-500/10 px-3 py-1 text-xs font-semibold text-alert-500">
+                  50% de descuento para nuestros primeros 10 clientes
+                </span>
+              </ScrollFadeIn>
+              <ScrollFadeIn delay={100}>
+                <h2 className="mt-4 text-2xl font-semibold text-ink-900">Un solo plan, sin sorpresas</h2>
+              </ScrollFadeIn>
             </div>
-            <div className="rounded-xl bg-canvas p-5 text-center">
-              <p className="text-sm text-ink-500">Suscripción anual</p>
-              <p className="mt-1 text-2xl font-semibold text-ink-900">
-                <span className="mr-1.5 text-base text-ink-500 line-through">$2.000.000</span>
-                $1.000.000 COP
-              </p>
-              <p className="mt-0.5 text-xs text-ink-500">primeros 10 clientes · luego $2.000.000/año</p>
+            
+            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <ScrollFadeIn delay={100}>
+                  <div className="rounded-xl bg-canvas p-5 text-center">
+                    <p className="text-sm text-ink-500">Pago único de activación</p>
+                    <p className="mt-1 text-2xl font-semibold text-ink-900">$1.000.000 COP</p>
+                  </div>
+                </ScrollFadeIn>
+                <ScrollFadeIn delay={200}>
+                  <div className="rounded-xl bg-canvas p-5 text-center">
+                    <p className="text-sm text-ink-500">Suscripción anual</p>
+                    <p className="mt-1 text-2xl font-semibold text-ink-900">
+                      <span className="mr-1.5 text-base text-ink-500 line-through">$2.000.000</span>
+                      $1.000.000 COP
+                    </p>
+                    <p className="mt-0.5 text-xs text-ink-500">primeros 10 clientes · luego $2.000.000/año</p>
+                  </div>
+                </ScrollFadeIn>
+            </div>
+         
+            <ScrollFadeIn delay={300}>
+              <ul className="mx-auto mt-8 max-w-sm space-y-2.5">
+                {included.map((item) => (
+                  <li key={item} className="flex items-center gap-2.5 text-sm text-ink-900">
+                    <Check size={16} className="shrink-0 text-brand-600" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </ScrollFadeIn>
+
+            <div className="mt-8 text-center">
+              <ScrollFadeIn delay={400}>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-700"
+                >
+                  <MessageCircle size={18} />
+                  Quiero mi clínica en eVet
+                </a>
+              </ScrollFadeIn>
             </div>
           </div>
-
-          <ul className="mx-auto mt-8 max-w-sm space-y-2.5">
-            {included.map((item) => (
-              <li key={item} className="flex items-center gap-2.5 text-sm text-ink-900">
-                <Check size={16} className="shrink-0 text-brand-600" />
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8 text-center">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-700"
-            >
-              <MessageCircle size={18} />
-              Quiero mi clínica en eVet
-            </a>
-          </div>
-        </div>
       </section>
+      
 
       {/* Footer */}
       <footer className="border-t border-ink-500/10 py-8 text-center text-xs text-ink-500">
